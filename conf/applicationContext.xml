@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:lang="http://www.springframework.org/schema/lang"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang-4.3.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+	
+	<!-- default scope="singleton" -->
+	<bean id="helloTime" class="com.study.springcore.case01.HelloTime"></bean>
+	
+	<bean id="cpu1" class="com.study.springcore.case01.CPU"></bean>
+	
+	<bean id="cpu2" class="com.study.springcore.case01.CPU"></bean>
+	
+	<bean id="cpu3" class="com.study.springcore.case01.CPU">
+		<property name="ghz" value="1.2"></property>
+	</bean>
+	
+	<bean id="cpu4" class="com.study.springcore.case01.CPU">
+		<constructor-arg value="0.8" index="0" />
+	</bean>
+	
+	<bean id="cpu5" class="com.study.springcore.case01.CPU" p:ghz="1.1" />
+	
+	<bean id="cpu6" class="com.study.springcore.case01.CPU" c:ghz="0.7" />
+	
+	<bean id="ram1" class="com.study.springcore.case01.RAM" p:gb="4" />
+	<bean id="ram2" class="com.study.springcore.case01.RAM" p:gb="8" />
+	<bean id="ram3" class="com.study.springcore.case01.RAM" p:gb="16" />
+	<bean id="ram4" class="com.study.springcore.case01.RAM" p:gb="32" />
+	
+	<bean id="hd1" class="com.study.springcore.case01.HD" p:gb="250" />
+	<bean id="hd2" class="com.study.springcore.case01.HD" p:gb="500" />
+	<bean id="hd3" class="com.study.springcore.case01.HD" p:gb="1000" />
+	
+	<bean id="computer" class="com.study.springcore.case01.Computer" />
+	
+	<bean id="acer" class="com.study.springcore.case01.Computer">
+		<property name="cpu" ref="cpu5"></property>
+		<property name="ram" ref="ram3"></property>
+		<property name="hd" ref="hd2"></property>
+	</bean>
+	
+	<bean id="ibm" class="com.study.springcore.case01.Computer"
+		c:cpu-ref="cpu3" c:ram-ref="ram4" c:hd-ref="hd3"
+	/>
+	
+</beans>

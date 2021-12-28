@@ -1,0 +1,13 @@
+# 檔案名稱  .gitignore
+
+# 忽略 Eclipse .settings folder
+.settings
+
+# 忽略 Eclipse .classpath file
+*.classpath
+
+# 忽略 Eclipse .project file
+*.project
+
+# 忽略 Eclipse target folder
+target
