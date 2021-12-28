@@ -9,4 +9,5 @@ public interface PersonService {
 	List<Person> findAllPersons();
 	Person getPerson(String name);
 	Person getPerson(Date birth);
+	List<Person> getPerson(int age);
 }
