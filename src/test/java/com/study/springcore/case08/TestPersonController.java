@@ -21,7 +21,7 @@ public class TestPersonController {
 //		System.out.println(personController.getPersonByName("Tom"));
 		
 		personController.getPersonByName("Randy");
-		personController.getPersonByName("Tom");
+		personController.getPersonByName("kulujain");
 	}
 
 }

@@ -8,4 +8,5 @@ public interface PersonService {
 	boolean append(Person person);
 	List<Person> findAllPersons();
 	Person getPerson(String name);
+	Person getPerson(Date birth);
 }

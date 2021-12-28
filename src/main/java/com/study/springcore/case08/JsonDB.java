@@ -28,7 +28,7 @@ public class JsonDB { // Json 資料庫
 	// Json file 資料庫存放地
 	private static final Path PATH = Paths.get("src/main/java/com/study/springcore/case08/person.json");
 	
-	// 查詢全部
+	// 取得 Person 全部資料
 	public List<Person> queryAll() throws Exception {
 		String jsonStr = Files.readAllLines(PATH).stream().collect(Collectors.joining());
 		// TypeToken類是用來解決java運行時泛型類型被擦除的問題。暫時記起來就好。
@@ -60,7 +60,7 @@ public class JsonDB { // Json 資料庫
 		}
 		return people;
 	}
-	
+	// 建立 Person 資料
 	public boolean add(Person person) throws Exception {
 		List<Person> people = queryAll();
 		// 作業 1:
@@ -80,18 +80,35 @@ public class JsonDB { // Json 資料庫
 			
 		// 如果 person 已存在則 return false
 		// name, age, birth 皆與目前資料庫某一 person 資料相同
-		if(!check.isPresent()) {
+//		if(!check.isPresent()) {
 			people.add(person);
 			String newJsonString = gson.toJson(people);
 			Files.write(PATH, newJsonString.getBytes("UTF-8"));
-			System.out.println("新增完成");
-		}else {
-			System.out.println("資料重複，請重新輸入");
-			
-		}
+//			System.out.println("新增完成");
+//		}else {
+//			System.out.println("資料重複，請重新輸入");
+//			
+//		}
 		return !check.isPresent() ? true : false ;
 	}
-	
-//	public Person person 
-	
+	// 根據姓名取得 Person
+	public Person getPersonByName (String name) throws Exception {
+		return null;
+	}
+	// 取得今天生日的 Person
+	public List<Person> getPersonByBirth (int yyyy, int mm, int dd) throws Exception{
+		return null;
+	}
+	// 取得某一歲數以上的 Person
+	public List<Person> getPersonByAge(int age) throws Exception{
+		return null;
+	}
+	// 根據姓名來修改Person的生日
+	public boolean updatePersonBirthByName(String name) throws Exception {
+		return true;
+	}
+	// 根據姓名來刪除Person
+	public boolean deletePersonByName(String name) throws Exception {
+		return true;
+	}
 }

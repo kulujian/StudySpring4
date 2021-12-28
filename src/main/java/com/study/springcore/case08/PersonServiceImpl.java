@@ -39,5 +39,14 @@ public class PersonServiceImpl implements PersonService {
 				.findFirst();
 		return optPerson.isPresent() ? optPerson.get() : null;
 	}
+
+	@Override
+	public Person getPerson(Date birth) {
+		Optional<Person> optPerson = findAllPersons()
+				.stream()
+				.filter(p -> p.getBirth().equals(birth))
+				.findFirst();
+		return optPerson.isPresent() ? optPerson.get() : null;
+	}
 	
 }

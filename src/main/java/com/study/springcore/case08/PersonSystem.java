@@ -33,13 +33,25 @@ public class PersonSystem {
 			case 2:
 				printPersons();
 				break;	
+			case 3:
+				searchPersonByName();
+				break;
+			case 4:
+				searchBirchByToday();
+				break;
+			case 5:
+				break;
+			case 6:
+				break;
+			case 7:
+				break;
 			case 0:
 				System.out.println("離開系統");
 				stop = true;
 				break;
 		}
 	}
-	
+	// 建立 Person 資料
 	private void createPerson() {
 		System.out.print("請輸入姓名 生日年 月 日: ");
 		// Ex: Jack 1999 4 5
@@ -50,10 +62,26 @@ public class PersonSystem {
 		int dd = sc.nextInt();
 		personController.addPerson(name, yyyy, mm, dd);
 	}
-	
+	// 取得 Person 全部資料
 	private void printPersons() {
 		personController.printAllPersons();
 	}
+	// 根據姓名取得 Person
+	private void searchPersonByName() {
+		System.out.print("請輸入姓名: ");
+		// Ex: Jack
+		Scanner sc = new Scanner(System.in);
+		String name = sc.next();
+		personController.getPersonByName(name);
+	}
+	// 取得今天生日的 Person
+	private void searchBirchByToday() {
+		personController.getPersonByBirth();
+	}
+	
+	
+	
+	
 	
 	public void start() {
 		while (!stop) {
