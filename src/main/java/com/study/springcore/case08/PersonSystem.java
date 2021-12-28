@@ -95,9 +95,7 @@ public class PersonSystem {
 		// Ex: Jack
 		Scanner sc = new Scanner(System.in);
 		String name = sc.next();
-		System.out.println(
-				personController.setBirthByName(name)
-				);
+		boolean judge = personController.setBirthByName(name);
 		
 	}
 	// 7. 根據姓名來刪除Person
