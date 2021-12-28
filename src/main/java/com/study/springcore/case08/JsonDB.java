@@ -80,35 +80,51 @@ public class JsonDB { // Json 資料庫
 			
 		// 如果 person 已存在則 return false
 		// name, age, birth 皆與目前資料庫某一 person 資料相同
-//		if(!check.isPresent()) {
+		if(!check.isPresent()) {
 			people.add(person);
 			String newJsonString = gson.toJson(people);
 			Files.write(PATH, newJsonString.getBytes("UTF-8"));
 //			System.out.println("新增完成");
-//		}else {
+		}//else {
 //			System.out.println("資料重複，請重新輸入");
 //			
 //		}
 		return !check.isPresent() ? true : false ;
 	}
-	// 根據姓名取得 Person
-	public Person getPersonByName (String name) throws Exception {
-		return null;
+	// 更新Person的生日
+	public boolean update(Person person) throws Exception {
+		List<Person> people = queryAll();
+		Optional<Person> check = people.stream()
+								.filter(user -> user.getName()
+								.equals(person.getName()))
+								.findFirst();
+		if(check.isPresent()) {
+			for(Person newPerson : people) {
+				if(newPerson.getName().equals(person.getName())) {
+					newPerson.setBirth(person.getBirth());
+				}
+			}
+			String newJsonString = gson.toJson(people);
+			Files.write(PATH, newJsonString.getBytes("UTF-8"));
+		}
+		return check.isPresent() ? true : false ;
 	}
-	// 取得今天生日的 Person
-	public List<Person> getPersonByBirth (int yyyy, int mm, int dd) throws Exception{
-		return null;
-	}
-	// 取得某一歲數以上的 Person
-	public List<Person> getPersonByAge(int age) throws Exception{
-		return null;
-	}
-	// 根據姓名來修改Person的生日
-	public boolean updatePersonBirthByName(String name) throws Exception {
-		return true;
-	}
-	// 根據姓名來刪除Person
-	public boolean deletePersonByName(String name) throws Exception {
-		return true;
+	// 刪除Person
+	public boolean delete(Person person) throws Exception {
+		List<Person> people = queryAll();
+		Optional<Person> check = people.stream()
+								.filter(user -> user.getName()
+								.equals(person.getName()))
+								.findFirst();
+		if(check.isPresent()) {
+			for(Person newPerson : people) {
+				if(newPerson.getName().equals(person.getName())) {
+					people.clear();
+				}
+			}
+			String newJsonString = gson.toJson(people);
+			Files.write(PATH, newJsonString.getBytes("UTF-8"));
+		}
+		return check.isPresent() ? true : false ;
 	}
 }

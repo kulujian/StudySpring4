@@ -73,7 +73,7 @@ public class PersonController {
 		}
 	}
 	// 3. 根據姓名取得 Person
-	public boolean getPersonByName(String name) {
+	public void getPersonByName(String name) {
 		// 1. 判斷 name ? JsonDB判斷回傳 true or false
 		// 2. 根據姓名取得 Person
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
@@ -83,7 +83,6 @@ public class PersonController {
 			System.out.println("+--------------+---------+--------------+");
 			System.out.printf("|   Name : %-10s Not found         |\n", name); // 12, 7, 12
 			System.out.println("+--------------+---------+--------------+");
-			return Optional.ofNullable(person).isPresent() ? true : false;
 		}else {
 			List<Person> pp2 = Stream.of(person).collect(Collectors.toList());
 			System.out.println("+--------------+---------+--------------+");
@@ -94,7 +93,6 @@ public class PersonController {
 				System.out.printf("| %-12s | %7d | %12s |\n", p.getName(), p.getAge(), birthday);
 				System.out.println("+--------------+---------+--------------+");
 			}
-			return Optional.ofNullable(person).isPresent() ? true : false;
 		}
 	}
 	// 4. 取得今天生日的 Person
@@ -148,35 +146,61 @@ public class PersonController {
 		}
 	}
 	// 6. 根據姓名來修改Person的生日
-	public boolean setBirthByName(String name) {
-		// 1. 判斷 name ? JsonDB判斷回傳 true or false
-		// 2. 根據姓名取得 Person
+	public void updatePerson(String name, int yyyy, int mm, int dd) {
+		// 1. 判斷 name, yyyy, mm 與 dd 是否有資料? JsonDB判斷回傳 true or false
+		// 2. 將 yyyy/mm/dd 轉日期格式
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-		// 資料呈現
-		Person person = personService.getPerson(name);
-		if(person == null) {
-			System.out.println("+--------------+---------+--------------+");
-			System.out.printf("|   Name : %-10s Not found         |\n", name); // 12, 7, 12
-			System.out.println("+--------------+---------+--------------+");
-			return Optional.ofNullable(person).isPresent() ? true : false;
-		}else {
-			List<Person> pp2 = Stream.of(person).collect(Collectors.toList());
-			System.out.println("+--------------+---------+--------------+");
-			System.out.println("|     name     |   age   |   birthday   |"); // 12, 7, 12
-			System.out.println("+--------------+---------+--------------+");
-			for(Person p : pp2) {
-				String birthday = sdf.format(p.getBirth());
-				System.out.printf("| %-12s | %7d | %12s |\n", p.getName(), p.getAge(), birthday);
-				System.out.println("+--------------+---------+--------------+");
-			}
-			return Optional.ofNullable(person).isPresent() ? true : false;
+		try {
+			Date birth = sdf.parse(yyyy + "/" + mm + "/" + dd);
+			updatePerson(name, birth);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
-	/*	第六項查詢name有無資料，無與第二項合併使用
-	 * 	輸入修改的生日資訊尚未設定
-	 *  如何update 及 delete 尚未研究。
-	 * 
-	 */
+	public void updatePerson(String name, Date birth) {
+		// 1. 判斷 name 與 birth 是否有資料? JsonDB判斷回傳 true or false
+		// 2. 建立 Person 資料
+		boolean check = personService.modify(name, birth);
+		System.out.println("+--------------+---------+--------------+");
+		System.out.printf("|       update person:   %-6b         |\n", check);
+		System.out.println("+--------------+---------+--------------+");
+	}
+/*
+		public void setBirthByName(int yyyy, int mm, int dd) {
+			// 1. 判斷 name ? JsonDB判斷回傳 true or false
+			// 2. 根據姓名取得 Person
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+			// 資料呈現
+			Person person = personService.getPerson(name);
+			if(person == null) {
+				System.out.println("+--------------+---------+--------------+");
+				System.out.printf("|   Name : %-10s Not found         |\n", name); // 12, 7, 12
+				System.out.println("+--------------+---------+--------------+");
+				return Optional.ofNullable(person).isPresent() ? true : false;
+			}else {
+				List<Person> pp2 = Stream.of(person).collect(Collectors.toList());
+				System.out.println("+--------------+---------+--------------+");
+				System.out.println("|     name     |   age   |   birthday   |"); // 12, 7, 12
+				System.out.println("+--------------+---------+--------------+");
+				for(Person p : pp2) {
+					String birthday = sdf.format(p.getBirth());
+					System.out.printf("| %-12s | %7d | %12s |\n", p.getName(), p.getAge(), birthday);
+					System.out.println("+--------------+---------+--------------+");
+				}
+			}
+		}
+		/*	第六項查詢name有無資料，無與第二項合併使用
+		 * 	輸入修改的生日資訊尚未設定
+		 *  如何update 及 delete 尚未研究。
+		 * 
+		 */
 	
 	// 7. 根據姓名來刪除Person
+	public void deletePerson (String name) {
+	
+	}
+	
+	/*	第七項剩下  controller,service  method 還沒寫上 ....
+	 * 
+	 **/
 }

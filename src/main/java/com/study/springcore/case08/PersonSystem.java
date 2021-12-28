@@ -91,16 +91,23 @@ public class PersonSystem {
 	}
 	// 6. 根據姓名來修改Person的生日
 	private void updateBirthByName() {
-		System.out.print("請輸入姓名: ");
-		// Ex: Jack
+		System.out.print("請輸入姓名 生日年 月 日: ");
+		// Ex: Jack 1999 1 1
 		Scanner sc = new Scanner(System.in);
 		String name = sc.next();
-		boolean judge = personController.setBirthByName(name);
+		int yyyy = sc.nextInt();
+		int mm = sc.nextInt();
+		int dd = sc.nextInt();
+		personController.updatePerson(name, yyyy, mm, dd);
 		
 	}
 	// 7. 根據姓名來刪除Person
 	private void deletePersonByName() {
-		
+		System.out.print("請輸入姓名: ");
+		// Ex: Jack
+		Scanner sc = new Scanner(System.in);
+		String name = sc.next();
+		personController.deletePerson(name);
 	}
 	
 	

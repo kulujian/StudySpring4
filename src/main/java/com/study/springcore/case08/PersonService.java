@@ -10,5 +10,9 @@ public interface PersonService {
 	Person getPerson(String name);
 	Person getPerson(Date birth);
 	List<Person> getPerson(int age);
+	boolean modify(String name, Date birth);
+	boolean modify(Person person);
+	boolean remove(String name, Date birth);
+	boolean remove(Person person);
 	
 }

@@ -18,10 +18,10 @@ public class PersonServiceImpl implements PersonService {
 	public boolean append(String name, Date birth) {
 		Person person = new Person();
 		person.setName(name);
+		person.setAge(0);
 		person.setBirth(birth);
 		return append(person);
 	}
-
 	@Override
 	public boolean append(Person person) {
 		return personDao.create(person);
@@ -58,6 +58,30 @@ public class PersonServiceImpl implements PersonService {
 		.filter(p -> p.getAge() > age )
 		.collect(Collectors.toList());
 		return person;
+	}
+
+	@Override
+	public boolean modify(String name, Date birth) {
+		Person person = new Person();
+		person.setName(name);
+		person.setAge(0);
+		person.setBirth(birth);
+		return modify(person);
+	}
+	@Override
+	public boolean modify(Person person) {
+		return personDao.update(person);
+	}
+
+	@Override
+	public boolean remove(String name, Date birth) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	@Override
+	public boolean remove(Person person) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 	
 }

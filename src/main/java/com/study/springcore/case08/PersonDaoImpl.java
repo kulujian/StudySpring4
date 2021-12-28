@@ -34,4 +34,29 @@ public class PersonDaoImpl implements PersonDao {
 		return people;
 	}
 	
+
+	@Override
+	public boolean update(Person person) {
+		Boolean check = null;
+		try {
+			check = jsonDB.update(person);
+		} catch (Exception e) {
+			e.printStackTrace();
+			check = false;
+		}
+		return check;
+	}
+
+	@Override
+	public boolean delete(Person person) {
+		Boolean check = null;
+		try {
+			check = jsonDB.delete(person);
+		} catch (Exception e) {
+			e.printStackTrace();
+			check = false;
+		}
+		return check;
+	}
+	
 }
