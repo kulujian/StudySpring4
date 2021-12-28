@@ -11,3 +11,6 @@
 
 # 忽略 Eclipse target folder
 target
+
+# 忽略 Eclipse .springBeans folder
+.springBeans
