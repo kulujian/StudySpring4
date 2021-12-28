@@ -3,6 +3,7 @@ package com.study.springcore.case08;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -45,8 +46,18 @@ public class PersonServiceImpl implements PersonService {
 		Optional<Person> optPerson = findAllPersons()
 				.stream()
 				.filter(p -> p.getBirth().equals(birth))
-				.findFirst();
+				.findAny();
 		return optPerson.isPresent() ? optPerson.get() : null;
+	}
+
+	@Override
+	public List<Person> getPerson(int age) {
+		List<Person> person =
+		findAllPersons()
+		.stream()
+		.filter(p -> p.getAge() > age )
+		.collect(Collectors.toList());
+		return person;
 	}
 	
 }

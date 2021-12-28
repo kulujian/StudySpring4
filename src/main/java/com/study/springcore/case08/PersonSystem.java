@@ -40,10 +40,13 @@ public class PersonSystem {
 				searchBirchByToday();
 				break;
 			case 5:
+				searchPersonByAge();
 				break;
 			case 6:
+				updateBirthByName();
 				break;
 			case 7:
+				deletePersonByName();
 				break;
 			case 0:
 				System.out.println("離開系統");
@@ -51,7 +54,7 @@ public class PersonSystem {
 				break;
 		}
 	}
-	// 建立 Person 資料
+	// 1. 建立 Person 資料
 	private void createPerson() {
 		System.out.print("請輸入姓名 生日年 月 日: ");
 		// Ex: Jack 1999 4 5
@@ -62,11 +65,11 @@ public class PersonSystem {
 		int dd = sc.nextInt();
 		personController.addPerson(name, yyyy, mm, dd);
 	}
-	// 取得 Person 全部資料
+	// 2. 取得 Person 全部資料
 	private void printPersons() {
 		personController.printAllPersons();
 	}
-	// 根據姓名取得 Person
+	// 3. 根據姓名取得 Person
 	private void searchPersonByName() {
 		System.out.print("請輸入姓名: ");
 		// Ex: Jack
@@ -74,13 +77,33 @@ public class PersonSystem {
 		String name = sc.next();
 		personController.getPersonByName(name);
 	}
-	// 取得今天生日的 Person
+	// 4. 取得今天生日的 Person
 	private void searchBirchByToday() {
 		personController.getPersonByBirth();
 	}
-	
-	
-	
+	// 5. 取得某一歲數以上的 Person
+	private void searchPersonByAge() {
+		System.out.print("請輸入年齡: ");
+		// Ex: 18
+		Scanner sc = new Scanner(System.in);
+		int age = sc.nextInt();
+		personController.getPersonByAge(age);
+	}
+	// 6. 根據姓名來修改Person的生日
+	private void updateBirthByName() {
+		System.out.print("請輸入姓名: ");
+		// Ex: Jack
+		Scanner sc = new Scanner(System.in);
+		String name = sc.next();
+		System.out.println(
+				personController.setBirthByName(name)
+				);
+		
+	}
+	// 7. 根據姓名來刪除Person
+	private void deletePersonByName() {
+		
+	}
 	
 	
 	public void start() {
