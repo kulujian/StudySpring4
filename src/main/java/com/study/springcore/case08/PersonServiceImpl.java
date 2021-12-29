@@ -74,14 +74,10 @@ public class PersonServiceImpl implements PersonService {
 	}
 
 	@Override
-	public boolean remove(String name, Date birth) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-	@Override
-	public boolean remove(Person person) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean remove(String name) {
+		Person person = new Person();
+		person.setName(name);
+		return personDao.delete(person);
 	}
 	
 }

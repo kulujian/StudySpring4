@@ -12,7 +12,6 @@ public interface PersonService {
 	List<Person> getPerson(int age);
 	boolean modify(String name, Date birth);
 	boolean modify(Person person);
-	boolean remove(String name, Date birth);
-	boolean remove(Person person);
+	boolean remove(String name);
 	
 }

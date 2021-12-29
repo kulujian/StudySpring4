@@ -97,7 +97,8 @@ public class PersonController {
 	}
 	// 4. 取得今天生日的 Person
 	public void getPersonByBirth() {
-		// 1. 取得今天生日的 Person
+		// 1. 判斷 有無今日 birth ? JsonDB判斷回傳 true or false
+		// 2. 依據目前日期取得當日生日 person
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 		Date today = new Date();
 		LocalDate todayLocalDate = today.toInstant()
@@ -124,7 +125,8 @@ public class PersonController {
 	}
 	// 5. 取得某一歲數以上的 Person
 	public void getPersonByAge(int age) {
-		// 1. 取得今天生日的 Person
+		// 1. 判斷大於age person ? JsonDB判斷回傳 true or false
+		// 2. 依據輸入age取得大於age person
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 //		 資料呈現
 		List<Person> person = personService.getPerson(age);
@@ -147,8 +149,7 @@ public class PersonController {
 	}
 	// 6. 根據姓名來修改Person的生日
 	public void updatePerson(String name, int yyyy, int mm, int dd) {
-		// 1. 判斷 name, yyyy, mm 與 dd 是否有資料? JsonDB判斷回傳 true or false
-		// 2. 將 yyyy/mm/dd 轉日期格式
+		// 1. 將 yyyy/mm/dd 轉日期格式
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 		try {
 			Date birth = sdf.parse(yyyy + "/" + mm + "/" + dd);
@@ -158,8 +159,8 @@ public class PersonController {
 		}
 	}
 	public void updatePerson(String name, Date birth) {
-		// 1. 判斷 name 與 birth 是否有資料? JsonDB判斷回傳 true or false
-		// 2. 建立 Person 資料
+		// 1. 判斷 name 是否有資料? JsonDB判斷回傳 true or false
+		// 2. 修改 Person birth 資料
 		boolean check = personService.modify(name, birth);
 		System.out.println("+--------------+---------+--------------+");
 		System.out.printf("|       update person:   %-6b         |\n", check);
@@ -197,7 +198,12 @@ public class PersonController {
 	
 	// 7. 根據姓名來刪除Person
 	public void deletePerson (String name) {
-	
+		// 1. 判斷 name 是否有資料? JsonDB判斷回傳 true or false
+		// 2. 建立 Person 資料
+		boolean check = personService.remove(name);
+		System.out.println("+--------------+---------+--------------+");
+		System.out.printf("|       delete person:   %-6b         |\n", check);
+		System.out.println("+--------------+---------+--------------+");
 	}
 	
 	/*	第七項剩下  controller,service  method 還沒寫上 ....

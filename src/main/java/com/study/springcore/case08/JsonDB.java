@@ -7,11 +7,14 @@ import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -116,12 +119,21 @@ public class JsonDB { // Json 資料庫
 								.filter(user -> user.getName()
 								.equals(person.getName()))
 								.findFirst();
+//		System.out.println(person.getName());
+		
 		if(check.isPresent()) {
-			for(Person newPerson : people) {
-				if(newPerson.getName().equals(person.getName())) {
-					people.clear();
-				}
-			}
+//			Object arr[] = people.stream().filter(p->p.getName() != person.getName()).toArray();
+//			Stream.of(person).forEach(System.out::println);
+			people = people.stream().filter(p->!(p.getName().equals(person.getName()))).collect(Collectors.toList());
+//			people.stream().map(p->p.getName().toString() != "kulu").forEach(System.out::println);
+//			System.out.println(arr[0][Person]['name']);
+			
+//			for(int i=0; i<arr.length; i++) {
+//				if(arr[i] == person.getName()) {
+////					people.remove(newPerson);
+////					System.out.println(person.getName());
+//				}
+//			}
 			String newJsonString = gson.toJson(people);
 			Files.write(PATH, newJsonString.getBytes("UTF-8"));
 		}
