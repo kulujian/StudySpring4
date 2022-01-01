@@ -91,7 +91,7 @@ public class PersonSystem {
 	}
 	// 6. 根據姓名來修改Person的生日
 	private void updateBirthByName() {
-		System.out.print("請輸入姓名 生日年 月 日: ");
+		System.out.print("請輸入姓名及要修改的生日(yyyy mm dd)\n請使用空格分開： ");
 		// Ex: Jack 1999 1 1
 		Scanner sc = new Scanner(System.in);
 		String name = sc.next();

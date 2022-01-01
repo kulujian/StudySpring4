@@ -8,7 +8,7 @@ public interface PersonService {
 	boolean append(Person person);
 	List<Person> findAllPersons();
 	Person getPerson(String name);
-	Person getPerson(Date birth);
+	List<Person> getPerson(Date birth);
 	List<Person> getPerson(int age);
 	boolean modify(String name, Date birth);
 	boolean modify(Person person);

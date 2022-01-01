@@ -1,5 +1,6 @@
 package com.study.springcore.case08;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -42,12 +43,14 @@ public class PersonServiceImpl implements PersonService {
 	}
 
 	@Override
-	public Person getPerson(Date birth) {
-		Optional<Person> optPerson = findAllPersons()
+	public List<Person> getPerson(Date birth) {
+
+		SimpleDateFormat sdf = new SimpleDateFormat("MMdd");
+		List<Person> person = findAllPersons()
 				.stream()
-				.filter(p -> p.getBirth().equals(birth))
-				.findAny();
-		return optPerson.isPresent() ? optPerson.get() : null;
+				.filter(p -> sdf.format(p.getBirth()).equals(sdf.format(birth)))
+				.collect(Collectors.toList());
+		return person;
 	}
 
 	@Override
