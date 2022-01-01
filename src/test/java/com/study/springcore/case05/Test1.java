@@ -25,17 +25,38 @@ public class Test1 {
 		
 		Student mary = ctx.getBean("s2", Student.class);
 //		System.out.println(mary);
+		Teacher t1 = ctx.getBean("t1", Teacher.class);
 		 
 		// 請問 mary 的老師有誰 ? 印出 name
 //		System.out.println(mary.getName() + "的課程：" + mary.getClazzs());
 		Teacher[] teachers = {ctx.getBean("t1", Teacher.class), ctx.getBean("t2", Teacher.class)};
 		Set<Teacher> teachers2 = new LinkedHashSet<>();
-		Set<Clazz> clazzs2 = new LinkedHashSet<>();
-//		Teacher t1 = ctx.getBean("t1", Teacher.class);
+		
+//		Stream.of(teachers).filter(
+//				p->p.getClazzs().stream().map(
+//						c->c.getId().equals(
+//										mary.getClazzs().stream().map(
+//											c->c.getId()
+//											)
+//								)
+//						)
+//				);
+//		Stream.of(t1).filter(t1.getClazzs().stream().filter(a -> a.getId().equals(mary.getClazzs().stream().map(s -> s.getId()))).equals(teachers2));
+//		Stream.of(teachers).map(p->p.getName()).forEach(System.out::println);
+		
+//		mary.getClazzs().stream().map(
+//				c->c.getId());           mary.getClazzs().stream().map(s -> s.getId())
+		
+		t1.getClazzs().stream().filter(a -> a.getId().equals(101)).forEach(System.out::println);
+		
+		
+		
+		
+//		Set<Clazz> clazzs2 = new LinkedHashSet<>();
 //		System.out.println(t1);
 	
-		clazzs2 = (Set<Clazz>) Stream.of(teachers).flatMap(C->C.getClazzs().stream());
-		System.out.println(clazzs2);
+//		clazzs2 = (Set<Clazz>) Stream.of(teachers).flatMap(C->C.getClazzs().stream());
+//		System.out.println(clazzs2);
 //		Stream.of(mary).flatMap(T->T.getClazzs())
 //		
 		
