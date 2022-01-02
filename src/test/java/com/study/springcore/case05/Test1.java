@@ -46,8 +46,8 @@ public class Test1 {
 		
 //		mary.getClazzs().stream().map(
 //				c->c.getId());           mary.getClazzs().stream().map(s -> s.getId())
-		
-		t1.getClazzs().stream().filter(a -> a.getId().equals(101)).forEach(System.out::println);
+//		mary.getClazzs().stream().mapToInt(s -> s.getId());
+//		t1.getClazzs().stream().filter(a->a. == mary.getClazzs().stream().map(s -> s.getId()).toString()).forEach(System.out::println);
 		
 		
 		
