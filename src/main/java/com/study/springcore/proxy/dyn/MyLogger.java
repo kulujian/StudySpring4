@@ -2,7 +2,14 @@ package com.study.springcore.proxy.dyn;
 
 import java.util.Arrays;
 
+import org.aspectj.lang.annotation.Aspect;
+import org.springframework.core.annotation.Order;
+import org.springframework.stereotype.Component;
+
 // Aspect 切面程式
+@Component
+@Aspect
+@Order(1)  // 數字越小越先執行 (預設是 Int 最大值)
 public class MyLogger {
 
 	// 前置通知 哪一個類，哪一個方法，哪個通知

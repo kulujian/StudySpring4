@@ -14,3 +14,7 @@ target
 
 # 忽略 Eclipse .springBeans folder
 .springBeans
+
+# 忽略 EcLipse .dbeaver folder
+.dbeaver
+
