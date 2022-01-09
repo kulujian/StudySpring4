@@ -1,4 +1,4 @@
-package com.study.springcore.a_try;
+package com.study.springcore.a_try.homework01;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.study.springcore.a_try;
+package com.study.springcore.a_try.homework01;
 
 import java.util.Arrays;
 import java.util.LinkedHashSet;

@@ -1,4 +1,4 @@
-package com.study.springcore.a_try;
+package com.study.springcore.a_try.homework01;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;

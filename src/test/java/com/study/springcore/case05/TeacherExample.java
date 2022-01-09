@@ -16,7 +16,7 @@ import org.springframework.core.style.ToStringCreator;
 
 import com.study.springcore.case01.Computer;
 
-public class Test2 {
+public class TeacherExample {
 	public static void main(String[] args) {
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext5.xml");
 		

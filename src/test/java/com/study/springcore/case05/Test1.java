@@ -15,6 +15,9 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.style.ToStringCreator;
 
 import com.study.springcore.case01.Computer;
+import com.study.springcore.case05.Clazz;
+import com.study.springcore.case05.Student;
+import com.study.springcore.case05.Teacher;
 
 public class Test1 {
 	public static void main(String[] args) {
