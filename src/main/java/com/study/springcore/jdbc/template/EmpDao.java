@@ -21,5 +21,13 @@ public class EmpDao {
 		return emps;
 	}
 	
+	public void searchNameById(String Id) {
+		String ename = queryAll().stream()
+				.filter(e->(e.get("eid")+"").equals(Id))	//Map取得資料要使用get()。Map是Object要轉字串
+				.findFirst()
+				.get()		// 取得所有資料(eid、ename、age、createtime)之後還是 Map(Object)
+				.get("ename")+"";	// Map取得資料要使用get()。取得後要在轉成字串，才會正常顯示
+		System.out.println(ename);
+	}
 	
 }
