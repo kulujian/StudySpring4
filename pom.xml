@@ -127,8 +127,26 @@
             <version>0.9.5.5</version>
         </dependency>
 
+		<!-- https://simpleflatmapper.org/ -->
+		<!--
+        <dependency>
+		    <groupId>org.simpleflatmapper</groupId>
+		    <artifactId>sfm-springjdbc</artifactId>
+		    <version>3.11.7</version>
+		</dependency>
+		-->
+		<!-- Simple flat mapper -->
+		<dependency>
+			<groupId>org.simpleflatmapper</groupId>
+			<artifactId>sfm-jdbc</artifactId>
+			<version>8.2.3</version>
+		</dependency>
+		<dependency>
+			<groupId>org.simpleflatmapper</groupId>
+			<artifactId>sfm-springjdbc</artifactId>
+			<version>8.2.3</version>
+		</dependency>
 
-        
 
 	</dependencies>
 </project>

@@ -14,58 +14,58 @@ public class TemplateTest1 {
 	
 	
 	// 又來一個選單
-	private void menu() {
-		System.out.println("=========================================");
-		System.out.println("1. 取得 Emp 全部資料");
-		System.out.println("2. 根據 eid 取得 Emp.ename");
-		System.out.println("3. 根據姓名來刪除Person");
-		System.out.println("0. 離開");
-		System.out.println("=========================================");
-		System.out.print("請選擇: ");
-		
-		Scanner sc = new Scanner(System.in);
-		int choice = sc.nextInt();
-		switch (choice) {
-			case 1:
-				printEmp();
-				break;
-			case 2:
-				searchPersonByName();
-				break;	
-			case 3:
+//	private void menu() {
+//		System.out.println("=========================================");
+//		System.out.println("1. 取得 Emp 全部資料");
+//		System.out.println("2. 根據 eid 取得 Emp.ename");
+//		System.out.println("3. 根據姓名來刪除Person");
+//		System.out.println("0. 離開");
+//		System.out.println("=========================================");
+//		System.out.print("請選擇: ");
+//		
+//		Scanner sc = new Scanner(System.in);
+//		int choice = sc.nextInt();
+//		switch (choice) {
+//			case 1:
+//				printEmp();
+//				break;
+//			case 2:
 //				searchPersonByName();
-				break;
-			case 0:
-				System.out.println("離開系統");
-				stop = true;
-				break;
-		}
-	}
+//				break;	
+//			case 3:
+////				searchPersonByName();
+//				break;
+//			case 0:
+//				System.out.println("離開系統");
+//				stop = true;
+//				break;
+//		}
+//	}
 	// 1. 取得 Person 全部資料
-	private void printEmp() {
-		empDao.queryAll();
-	}
+//	private void printEmp() {
+//		empDao.queryAll();
+//	}
 	// 3. 根據姓名取得 Person
-	private void searchPersonByName() {
-		System.out.print("請輸入Eid: ");
-		// Ex: 1,2
-		Scanner sc = new Scanner(System.in);
-		String eid = sc.next();
-		empDao.searchNameById(eid);
-	}
+//	private void searchPersonByName() {
+//		System.out.print("請輸入Eid: ");
+//		// Ex: 1,2
+//		Scanner sc = new Scanner(System.in);
+//		String eid = sc.next();
+//		empDao.searchNameById(eid);
+//	}
 	
-	public void start() {
-		while (!stop) {
-			menu();
-		}
-	}
-	
+//	public void start() {
+//		while (!stop) {
+//			menu();
+//		}
+//	}
+//	
 	
 	
 	
 	public static void main(String[] args) {
-//		ApplicationContext ctx = new ClassPathXmlApplicationContext("jdbc-config.xml");
-//		EmpDao empDao = ctx.getBean("empDao", EmpDao.class);
+		ApplicationContext ctx = new ClassPathXmlApplicationContext("jdbc-config.xml");
+		EmpDao empDao = ctx.getBean("empDao", EmpDao.class);
 //		System.out.println(empDao.queryAll());
 		
 		// 如何取得 eid=2 的員工姓名？ (請使用 java 8 stream)
@@ -81,7 +81,10 @@ public class TemplateTest1 {
 		 *  在每次的 查詢中 都可以將查詢時間的 Log 記錄下來
 		 *  +
 		*/
-		new TemplateTest1().start();
+//		new TemplateTest1().start();
 		
+		
+		System.out.println(empDao.queryListEmps());
+		System.out.println(empDao.qreryListEmps2());
 	}
 }
