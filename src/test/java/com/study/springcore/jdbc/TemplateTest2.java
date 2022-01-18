@@ -21,28 +21,29 @@ public class TemplateTest2 {
 //			System.out.println(empDao.queryListEmps());
 
 			// 測試單筆新增1		
-//			System.out.println(empDao.queryListEmps());
+//			rowcount = empDao.addOne1("test1", 18);
+//			System.out.println("測試單筆新增 I: " + rowcount);
 			// 測試單筆新增2			
 //			rowcount = empDao.addOne2("test2", 19);
 //			System.out.println("測試單筆新2: " + rowcount);
-			//測試多筆新增 1
+//			測試多筆新增 1
 //			List<Object[]> rows = new ArrayList<>();
-//			rows.add(new Object[] {"jo", 20});
-//			rows.add(new Object[] {"Mark", 21});
-//			rows.add(new Object[] {"Vincent", 22});
+//			rows.add(new Object[] {"jojo", 20});
+//			rows.add(new Object[] {"jian", 21});
+//			rows.add(new Object[] {"kulu", 38});
 //			rowcounts = empDao.multiAdd(rows);
 //			System.out.println("測試多筆新增 1: " + Arrays.toString(rowcounts));
 			
 			// 測試多筆新增 2
-//			List<Emp> emps = new ArrayList<Emp>();
+//			List<Emp> emps = new ArrayList<>();
 //			emps.add( new Emp("Bobo2", 25));
 //			emps.add( new Emp("Bob", 26));
 //			emps.add( new Emp("Alice", 27));
 //			rowcounts = empDao.mulitAdd2(emps);
-//			System.out.println("測試多筆新增2: "+ rowcount);
+//			System.out.println("測試多筆新增2: "+ Arrays.toString(rowcounts));
 //			
 			// 測試修改
-//			rowcount = empDao.updateByid(1, "TTom", 34);
+//			rowcount = empDao.updateByid(1, "Tom", 34);
 //			System.out.println("測試修改: "+ rowcount);
 			// 測試刪除
 //			rowcount = empDao.deleteById(3);

@@ -39,6 +39,7 @@
 		<constructor-arg ref="dataSource" />
 	</bean>
 	
+	<!-- Aspect 配置 -->
 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 	
 </beans>

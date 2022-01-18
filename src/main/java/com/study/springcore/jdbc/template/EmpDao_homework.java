@@ -17,7 +17,7 @@ import org.springframework.stereotype.Repository;
 import com.study.springcore.jdbc.entity.Emp;
 
 @Repository
-public class EmpDao {
+public class EmpDao_homework {
 
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
@@ -33,10 +33,22 @@ public class EmpDao {
 		return emps;
 	}
 	
+	public String searchNameById(String Id) {
+		try {
+			String ename = queryAll().stream()
+					.filter(e->(e.get("eid")+"").equals(Id))	//Map取得資料要使用get()。Map是Object要轉字串
+					.findFirst()
+					.get()		// 取得所有資料(eid、ename、age、createtime)之後還是 Map(Object)
+					.get("ename")+"";	// Map取得資料要使用get()。取得後要在轉成字串，才會正常顯示
+			return ename;
+		} catch (Exception e2) {
+			return "undefine";
+		}
+	}
 	
 	// 多筆查詢 2
 	public List<Emp> queryListEmps(){
-		String sql = "select eid, ename, age, createtime from emp";
+		String sql = "select eid, ename, age, createtime from Emp";
 		List<Emp> emps = jdbcTemplate.query(sql, (ResultSet rs, int rowNum) -> {
 			Emp emp = new Emp();
 			emp.setEid(rs.getInt("eid"));
@@ -70,6 +82,21 @@ public class EmpDao {
 		return rowcount;
 	}
 	
+	// HomeWork
+		// 單筆新增 1
+		public int addLog(String method_name) {
+			String sql = "insert into log(method_name) values(?)";
+			int rowcount = jdbcTemplate.update(sql, method_name);
+			return rowcount;
+		}
+		// 多筆查詢 1
+		public List<Map<String, Object>> showLog(){
+			
+			String sql = "select * from log";
+			List<Map<String, Object>> logs = jdbcTemplate.queryForList(sql);
+			return logs;
+		}
+	// HomeWork
 	
 	// 多筆新增 1
 	public int[] multiAdd(List<Object[]> rows) {

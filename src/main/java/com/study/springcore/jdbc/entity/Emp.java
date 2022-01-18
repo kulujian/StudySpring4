@@ -2,7 +2,7 @@ package com.study.springcore.jdbc.entity;
 
 import java.util.Date;
 import java.util.List;
-import java.util.stream.Collectors;
+import static java.util.stream.Collectors.toList;
 
 public class Emp {
 	private Integer eid;
