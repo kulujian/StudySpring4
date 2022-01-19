@@ -5,6 +5,7 @@ import java.util.List;
 import static java.util.stream.Collectors.toList;
 
 public class Emp {
+	// 欄位
 	private Integer eid;
 	private String ename;
 	private Integer age;
@@ -69,8 +70,8 @@ public class Emp {
 	@Override
 	public String toString() {
 		return "Emp [eid=" + eid + ", ename=" + ename + ", age=" + age + ", createtime=" + createtime + ", job=" + 
-				(job == null ? "" : job.stream().map(Job::getJname).collect(toList()))
-				+ "]";
+				(job == null ? "" : job.stream().map(Job::getJname).collect(toList())) 
+				+ "]"; //因為import為static 所以可以直接調用toList()
 
 
 	}

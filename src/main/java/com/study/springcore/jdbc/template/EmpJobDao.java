@@ -20,22 +20,23 @@ public class EmpJobDao {
 	
 	public List<Emp> queryEmps(){
 		// 請查出每個人的工作名稱為何？
-		String sql = "select eid, ename, age, createtime, from emp";
+		String sql = "select eid, ename, age, createtime from emp";
 		List<Emp> emps = jdbcTemplate.query(sql, (ResultSet rs, int rowNum)->{
 			Emp emp = new Emp();
+			// 設定欄位
 			emp.setEid(rs.getInt("eid"));
 			emp.setEname(rs.getString("ename"));
-			emp.setAge(rs.getInt("age"));
+			emp.setAge(rs.getInt("age")); 
 			emp.setCreatetime(rs.getTimestamp("createtime"));
 			
-			String sql2 = "select jid, jname, eid form job where eid=?";
+			String sql2 = "select jid, jname, eid from job where eid=?";
 			List<Job> jobs = jdbcTemplate.query(sql2, new BeanPropertyRowMapper(Job.class), emp.getEid());
 			
 			// 設定關聯
 			emp.setJobs(jobs);
 			return emp;
 		});
-		return null;
+		return emps;
 	}
 
 	public List<Job> queryJobs(){
@@ -43,6 +44,7 @@ public class EmpJobDao {
 		String sql ="select jid, jname, eid from job";
 		List<Job> jobs = jdbcTemplate.query(sql, (ResultSet rs, int rowNum)->{
 			Job job = new Job();
+			// 設定欄位
 			job.setJid(rs.getInt("jid"));
 			job.setJname(rs.getString("jname"));
 			job.setEid(rs.getInt("eid"));
@@ -53,12 +55,12 @@ public class EmpJobDao {
 			if(emps != null && emps.size() > 0) {
 				job.setEmp(emps.get(0));
 			}
-			
 			return job;
 		});
-		
 		return jobs;
 	}
+	
+	
 	public List<Emp> queryEmps2(){
 		String sql = "select e.eid, e.ename, e.age, e.createtime,\r\n"
 				+ "       j.jid as job_jid, j.jname as job_jname, j.eid as job_eid\r\n"
@@ -72,6 +74,7 @@ public class EmpJobDao {
 		
 		return jdbcTemplate.query(sql, resultSetExtractor);
 	}
+	
 	public List<Job> queryJobs2(){
 		String sql = "select j.jid, j.jname, j.eid ,\r\n"
 			+ "       e.eid as emp_eid, e.ename as emp_ename, e.age as emp_age, e.createtime as emp_createtime\r\n"

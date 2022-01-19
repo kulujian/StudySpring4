@@ -71,13 +71,13 @@ public class EmpDao {
 	}
 	
 	
-	// 多筆新增 1
+	// 多筆新增 1 (使用 Object 陣列)
 	public int[] multiAdd(List<Object[]> rows) {
 		String sql = "insert into emp(ename, age) value(?, ?)";
 		return jdbcTemplate.batchUpdate(sql, rows);
 	}
 	
-	// 多筆新增 2
+	// 多筆新增 2 (使用 Emp class)
 	public int[] mulitAdd2(List<Emp> emps) {
 		String sql = "insert into emp(ename, age) value(?, ?)";
 		BatchPreparedStatementSetter setter = new BatchPreparedStatementSetter() {

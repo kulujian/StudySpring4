@@ -1,7 +1,7 @@
 package com.study.springcore.jdbc.entity;
 
 public class Job {
-
+	// 欄位
 	private Integer jid;
 	private String jname;
 	private Integer eid;
@@ -44,8 +44,8 @@ public class Job {
 	@Override
 	public String toString() {
 		return "Job [jid=" + jid + ", jname=" + jname + ", eid=" + eid + ", emp=" + 
-				(emp==null?"":emp.getEname()) + "]";
-	}
+				(emp==null ? "" : emp.getEname()) + "]"; // 直接給 emp 會與它的 toString遞回
+	}												 	 // 判斷有沒有值，否則執行會出錯
 	
 	
 }

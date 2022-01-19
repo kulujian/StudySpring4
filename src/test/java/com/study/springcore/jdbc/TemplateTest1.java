@@ -34,6 +34,6 @@ public class TemplateTest1 {
 //		 多筆查詢 1
 		System.out.println(empDao.queryListEmps());
 //		 多筆查詢 2
-		System.out.println(empDao.qreryListEmps2());
+//		System.out.println(empDao.qreryListEmps2());
 	}
 }
