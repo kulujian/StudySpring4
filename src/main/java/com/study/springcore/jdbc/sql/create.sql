@@ -77,6 +77,20 @@ left join job j
 on e.eid = j.eid 
 group by e.ename
 
+-- 查詢工作量最多的員工有幾項工作 (學生範例)
+SELECT e.ename, count(j.name) AS WORK
+FROM emp e, job j ON e.eid = j.eid
+GROUP BY e.ename
+ORDER BY 2 -- ORDER BY WORK 
+LIMIT 1;
+
+SELECT d.ename, MAX(cnt)
+FROM (
+	SELECT a.ename, count(b.jname) AS cnt
+	FROM emp a INNER JOIN job b ON a.eid = b.eid
+	GROUP BY a.ename
+)d;
+
 
 -- 查詢 Emp 資料
 select * from emp;

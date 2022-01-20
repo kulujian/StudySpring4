@@ -32,7 +32,7 @@ public class TemplateTest1 {
 		*/
 		
 //		 多筆查詢 1
-		System.out.println(empDao.queryListEmps());
+		empDao.queryListEmps().forEach(System.out::println);
 //		 多筆查詢 2
 //		System.out.println(empDao.qreryListEmps2());
 	}

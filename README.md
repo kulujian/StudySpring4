@@ -16,3 +16,10 @@
         重新設計內容為選單模式，目前測試正常
   四、修改 conf/jdbc-config.xml
         加入【<aop:aspectj-autoproxy></aop:aspectj-autoproxy】代理
+
+# 2022/01/20 設計 01/16 回家作業
+  一、建立 sql table Invoice,Item,ItemProduct 及 values
+  二、建立 entity Invoice,Item,ItemProduct
+  三、建立 template 及 Dao
+  四、建立 MainLab01
+  目前進度：可以將資料抓出來，目前測試其它語法

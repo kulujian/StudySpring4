@@ -12,7 +12,7 @@ public class Emp {
 	private Date createtime;
 	
 	// 關係
-	private List<Job> job;
+	private List<Job> job;  //一個 emp 對應多個 job
 	
 	
 	public Emp() {
