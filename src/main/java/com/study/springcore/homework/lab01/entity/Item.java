@@ -66,12 +66,15 @@ public class Item {
 
 	@Override
 	public String toString() {
-		return "品項 [品項序號=" + id + ", 產品數量=" + amount + 
-				(itemProduct == null ? ", 產品序號=" + ipid : "") + 
-				(invoice == null ? ", 發票序號=" + invid : "") + 
+		return "查詢結果" + 
+				(id == null ? "" : "[品項序號=" + id) + 
+				(ipid == null ? "" : ", 產品序號=" + ipid) + 
+				(invid == null ? "" : ", 發票序號=" + invid) + 
 				(invoice == null ? "" :", 發票日期=" + invoice.getInvdate()) + 
-				(itemProduct == null ? "" : ", 產品名稱=" + itemProduct.getText() + ", 產品單價=" + itemProduct.getPrice()) + 
-				"]";
+				(itemProduct == null ? "" : (itemProduct.getText() == null ? "" : ", 產品名稱=" + itemProduct.getText()) +
+											(itemProduct.getPrice() == null ? "" : ", 價錢=" + itemProduct.getPrice())) +
+				(amount == null ? "" : ", 數量=" + amount) +  
+				" 。";
 	}
 	
 	

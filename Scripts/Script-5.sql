@@ -7,5 +7,15 @@ FROM Item i2 LEFT OUTER JOIN Invoice i ON i2.invid = i.id
 SELECT i.id, i.invdate,
        i2.id AS Item_id, i2.amount AS Item_amount, i2.ipid AS Item_ipid, i2.invid AS Item_invid,
 	   ip.id AS ItemProduct_id, ip.text AS ItemProduct_text, ip.price AS ItemProduct_price, ip.inventory AS ItemProduct_inventory
-FROM Invoice i LEFT OUTER JOIN Item i2 ON i.id = i2.invid
+FROM Invoice i RIGHT OUTER JOIN Item i2 ON i.id = i2.invid
                LEFT OUTER JOIN ItemProduct ip ON i2.ipid = ip.id ;
+               
+
+	SELECT i.invdate , SUM(i2.amount) AS Sum 
+	FROM Invoice i INNER JOIN Item i2 ON i.id = i2.invid
+	GROUP BY 1;
+	
+
+	SELECT i.invdate , ip.`text` AS 'ItemProduct_text'
+	FROM Invoice i INNER JOIN Item i2 ON i.id = i2.invid 
+	               INNER JOIN ItemProduct ip ON i2.ipid = ip.id;

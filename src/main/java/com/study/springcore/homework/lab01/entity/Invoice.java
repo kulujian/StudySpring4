@@ -12,6 +12,7 @@ public class Invoice {
 	
 	//關係
 	private List<Item> items; // 一個 Invoice.id 對應多個 Item.invid
+	private List<ItemProduct> itemProducts; // 一個 Invoice.id 對應多個 Item.invid
 
 	public Invoice() {
 //		super();
@@ -35,11 +36,22 @@ public class Invoice {
 	public void setItems(List<Item> items) {
 		this.items = items;
 	}
+	public List<ItemProduct> getItemProducts() {
+		return itemProducts;
+	}
+	public void setItemProducts(List<ItemProduct> itemProducts) {
+		this.itemProducts = itemProducts;
+	}
 
 	@Override
 	public String toString() {
-		return "發票內容 [發票序號=" + id + ", 發票日期=" + invdate + ", 品項=" + 
+		return  "發票內容 " + 
+				( id == null ? "" : "[發票序號=" + id) + 
+				(invdate == null ? "" : ", 發票日期=" + invdate) + 
+				", 品項=" + 
 				(items == null ? "null" : items.stream().map(i -> i.toString()).collect(Collectors.toList())) + 
+				", 產品項目=" + 
+				(itemProducts == null ? "null" : itemProducts.stream().map(i -> i.toString()).collect(Collectors.toList())) + 
 				"]";
 	}
 

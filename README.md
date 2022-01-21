@@ -23,3 +23,8 @@
   三、建立 template 及 Dao
   四、建立 MainLab01
   目前進度：可以將資料抓出來，目前測試其它語法
+
+# 2022/01/20 設計 01/16 回家作業
+  一、建立 contrllers ItemInvidIpidController
+  目前進度：已經例用entity return toString 實現回家作業內容
+            目前正在改用 menu loop 方式，變成可選。
