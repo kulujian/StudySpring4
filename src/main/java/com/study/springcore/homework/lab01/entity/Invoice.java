@@ -12,7 +12,7 @@ public class Invoice {
 	
 	//關係
 	private List<Item> items; // 一個 Invoice.id 對應多個 Item.invid
-	private List<ItemProduct> itemProducts; // 一個 Invoice.id 對應多個 Item.invid
+	private List<ItemProduct> itemProducts; // 一個 Invoice.id 對應多個 Item.ipid
 
 	public Invoice() {
 //		super();

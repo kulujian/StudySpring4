@@ -28,3 +28,7 @@
   一、建立 contrllers ItemInvidIpidController
   目前進度：已經例用entity return toString 實現回家作業內容
             目前正在改用 menu loop 方式，變成可選。
+
+# 2022/01/21 設計 01/16 回家作業
+  目前進度：完成作業，待上傳
+

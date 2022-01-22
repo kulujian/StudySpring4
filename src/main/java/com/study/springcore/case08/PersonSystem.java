@@ -14,7 +14,6 @@ public class PersonSystem {
 		System.out.println("=========================================");
 		System.out.println("1. 建立 Person 資料");
 		System.out.println("2. 取得 Person 全部資料");
-		// 作業 2:
 		System.out.println("3. 根據姓名取得 Person");
 		System.out.println("4. 取得今天生日的 Person");
 		System.out.println("5. 取得某一歲數以上的 Person");

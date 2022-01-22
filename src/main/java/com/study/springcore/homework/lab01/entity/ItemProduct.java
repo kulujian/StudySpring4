@@ -12,12 +12,14 @@ public class ItemProduct {
 	private Integer inventory;
 	
 	// 關係
-	private List<Item> items;  // 一個ItemProduct.id 對應多個 Item.ipid
+	private List<Item> items;  // 一個 ItemProduct.id 對應多個 Item.ipid
+	private List<Invoice> invoices;  // 一個 ItemProduct.id 對應多個 Item.invid
+	
 	
 	public ItemProduct() {
 //		super();
 	}
-
+	
 	public Integer getId() {
 		return id;
 	}
@@ -48,11 +50,19 @@ public class ItemProduct {
 	public void setItems(List<Item> items) {
 		this.items = items;
 	}
+	public List<Invoice> getInvoices() {
+		return invoices;
+	}
+	public void setInvoices(List<Invoice> invoices) {
+		this.invoices = invoices;
+	}
 
 	@Override
 	public String toString() {
 		return "產品項目 [產品序號=" + id + ", 產品名稱=" + text + ", 產品價格=" + price + ", 庫存數量=" + inventory + 
-				(items == null ? "" : ", items=" + items.stream().map(i -> i.toString()).collect(Collectors.toList())) + 
+				(items == null ? "" : ", 品項=" + items.stream().map(i -> i.toString()).collect(Collectors.toList())) + 
+				(invoices == null ? "" : ", 發票=" + invoices.stream().map(i -> i.toString()).collect(Collectors.toList())) + 
 				"]";
 	}
+
 }
