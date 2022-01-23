@@ -32,3 +32,30 @@
 # 2022/01/21 設計 01/16 回家作業
   目前進度：完成作業，待上傳
 
+# 2022/01/23 上課學習 Spring TX 交易/事務管理
+  練習路徑：
+	scr/main/java/com/study/springcore/tx/*.*
+  配置 jdbc-config.xml 需要加入以下配置
+	<beans xmlns:tx="http://www.springframework.org/schema/tx"
+		xsi:schemaLocation="http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+
+	    <!-- 需要 Bean 掃描的位置 -->
+	    <context:component-scan base-package="com.study.springcore.tx" />
+
+	    <!-- 配置事務管理器 -->
+	    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" ></property>
+	    </bean>
+
+	    <!-- 開啟註解驅動，對事務相關的註解進行掃描與解析 -->
+		<tx:annotation-driven transaction-manager="transactionManager"></tx:annotation-driven>
+
+	</beans>
+
+  若是不用 Spring Template 進行事務管理，傳統使用 Java 方式
+	路徑：scr/main/java/com/study/springcore/jdbc/template
+	檔案：EmpDao.java
+	方法：addOne1TX()
+	main方法：scr/text/java/com/study/springcore/jdbc/Template4.java
+  一樣可以達到效果，舊專案可能會遇到
+

@@ -13,7 +13,7 @@ import com.study.springcore.homework.lab01.entity.Item;
 import com.study.springcore.homework.lab01.entity.ItemProduct;
 
 @Repository
-public class ItemInvidIpidDao {
+public class ItemInvidIpidDao { 
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 

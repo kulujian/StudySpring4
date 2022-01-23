@@ -12,8 +12,13 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.TransactionDefinition;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.support.DefaultTransactionDefinition;
 
+import com.mchange.v2.c3p0.ComboPooledDataSource;
 import com.study.springcore.jdbc.entity.Emp;
 
 @Repository
@@ -24,6 +29,9 @@ public class EmpDao {
 	
 	@Autowired
 	private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
+	
+	@Autowired
+	private ComboPooledDataSource datasource;
 	
 	// 多筆查詢 1
 	public List<Map<String, Object>> queryAll(){
@@ -106,4 +114,31 @@ public class EmpDao {
 		String sql = "delete from emp where eid=?";
 		return jdbcTemplate.update(sql, eid);
 	}
+	
+
+	
+	// 單筆新增 1(不用SpringTemplate , JAVA手動設定交易管理版)
+	public int addOne1TX(String ename, Integer age) {
+		// 建立 TransactionManager
+		DataSourceTransactionManager transactionManager = new DataSourceTransactionManager(datasource);
+		// 定義 TransactionDefinition
+		DefaultTransactionDefinition def = new DefaultTransactionDefinition();
+		def.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRED);
+		
+		TransactionStatus status =  transactionManager.getTransaction(def);
+		
+		int rowcount = 0;
+		try {
+			String sql = "insert into emp(ename, age) values(?, ?)";
+			rowcount = jdbcTemplate.update(sql, ename, age);
+//			System.out.println(10/0);	// 模擬發生錯誤，就不會發生交易
+		} catch (Exception e) {
+			transactionManager.rollback(status);
+			throw e;
+		}
+		transactionManager.commit(status);
+		return rowcount;
+		
+	}
+	
 }
