@@ -30,8 +30,6 @@ public class EmpDao {
 	@Autowired
 	private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 	
-	@Autowired
-	private ComboPooledDataSource datasource;
 	
 	// 多筆查詢 1
 	public List<Map<String, Object>> queryAll(){
@@ -118,10 +116,14 @@ public class EmpDao {
 
 	
 	// 單筆新增 1(不用SpringTemplate , JAVA手動設定交易管理版)
-	public int addOne1TX(String ename, Integer age) {
-		// 建立 TransactionManager
+	
+	@Autowired
+	private ComboPooledDataSource datasource; // 在jdbc配置檔內確認 datasource是誰
+	
+	public int addOne1TX(String ename, Integer age) throws Exception{
+		// 建立 TransactionManager，DataSorceTransactionManager(datasource)←datasource是被管理的對象
 		DataSourceTransactionManager transactionManager = new DataSourceTransactionManager(datasource);
-		// 定義 TransactionDefinition
+		// 定義 TransactionDefinition，設定傳播模式
 		DefaultTransactionDefinition def = new DefaultTransactionDefinition();
 		def.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRED);
 		
