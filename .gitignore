@@ -1,20 +1,41 @@
 # 檔案名稱  .gitignore
 
 # 忽略 Eclipse .settings folder
-.settings
+# .settings
 
 # 忽略 Eclipse .classpath file
-*.classpath
+# *.classpath
 
 # 忽略 Eclipse .project file
-*.project
+# *.project
 
 # 忽略 Eclipse target folder
-target
+# target
 
 # 忽略 Eclipse .springBeans folder
-.springBeans
+# .springBeans
 
 # 忽略 EcLipse .dbeaver folder
-.dbeaver
+# .dbeaver
 
+# ==========以上為黑名單配置設定==========
+
+# ==========以下為白名單配置設定==========
+
+*
+!*/
+
+# pom.xml
+!/pom.xml
+
+# conf : .properties .xml
+!conf/**
+
+# src : CourseWork source code
+!src/**
+
+# track this file
+!.gitignore
+
+# README.md
+!README.md

@@ -6,3 +6,14 @@ FROM (
 	GROUP BY 1
 -- ORDER BY 2 DESC LIMIT 1; -- 子查詢異常時使用
 ) M;
+
+
+SET @AAA = 'B003';
+select DEP_NAME, DEP_CODE, DEP_CODE_MGR , @AAA AS DEP_CODE_TOP
+from Maxe_DOC_20210906.ORG_DATA od1
+where DEP_CODE_MGR in (
+	select DEP_CODE 
+	from Maxe_DOC_20210906.ORG_DATA od2
+	where DEP_CODE_MGR = @AAA
+) -- AND DEP_CODE NOT LIKE 'E%'
+;
