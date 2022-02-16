@@ -6,7 +6,11 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Set;import java.util.stream.Collector;
+import java.util.Set;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -37,7 +41,49 @@ public class Test1 {
 		
 		
 		
-//		Stream.of(teachers).filter(
+//		Arrays.stream(teachers).flatMap(teacher -> teacher.getClazzs().stream())
+//								.filter(new Predicate<Clazz>() {
+//									@Override
+//									public boolean test(Clazz clazz) {
+//										return clazz.getId().equals(mary.getClazzs().stream()
+//																		.map(new Function<Clazz, Integer>() {
+//																			@Override
+//																			public Integer apply(Clazz clazz) {
+//																				return clazz.getId();
+//																			};
+//																		}));
+//									};
+//								})
+//								.forEach(clazz -> System.out.println("學習轉換: "+clazz.getId()));
+//		mary.getClazzs().stream()
+//		.map(new Function<Clazz, Integer>() {
+//			@Override
+//			public Integer apply(Clazz clazz) {
+//				return clazz.getId();
+//			};
+//		}).forEach(new Consumer<Integer>() {
+//
+//			@Override
+//			public void accept(Integer t) {
+//				System.out.println(t);
+//			}
+//			
+//		});
+		
+		List<String> tname = Arrays.stream(teachers).filter(
+				teacher -> teacher.getClazzs().stream().map(clazz -> clazz.getId()).anyMatch(
+						tid -> mary.getClazzs().stream().map(clazz -> clazz.getId()).anyMatch(sid -> sid == tid)
+				)
+		).map(teacher -> teacher.getName()).collect(Collectors.toList());
+		
+		System.out.println(mary.getName()+" 的老師有 ："+tname);
+		
+		
+		
+		
+		
+		
+//		Stream.of(teachers).filter(tea
 //				p->p.getClazzs().stream().map(
 //						c->c.getId().equals(
 //										mary.getClazzs().stream().map(

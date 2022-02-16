@@ -14,8 +14,8 @@ public class TemplateTest4 {
 			EmpDao empDao = ctx.getBean("empDao", EmpDao.class);
 
 
-			empDao.addOne1TX("Tetx2", 20);
-			System.out.println("addoneTX OK !");
+//			empDao.addOne1TX("Tetx2", 20);
+//			System.out.println("addoneTX OK !");
 
 		}
 }
